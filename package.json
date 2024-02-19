@@ -1,0 +1,11 @@
+{
+  "name": "4-natours",
+  "version": "1.0.0",
+  "description": "Learn node and express",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ephrem",
+  "license": "ISC"
+}
