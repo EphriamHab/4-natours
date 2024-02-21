@@ -1,6 +1,25 @@
 const fs = require('fs')
 const tours = JSON.parse(fs.readFileSync(`${__dirname}/../dev-data/data/tours-simple.json`))
 
+exports.checkID = (req,res,next, val)=>{
+    console.log(`Tour id is: ${val}`)
+    if(req.params.id * 1 > tours.length){
+        return res.status(404).json({
+            status:"Fail",
+            message:"Invalid data"
+        })
+    }
+    next()
+}
+exports.checkBody = (req, res, next)=>{
+    if(!req.body.name || !req.body.price){
+        return res.status(400).json({
+            status:'fail',
+            message:'Missing name or price'
+        })
+    }
+    next()
+}
 exports.getAllTours =  (req, res)=>{
     console.log(req.requestTIME )
      res.status(200).json({
@@ -14,14 +33,7 @@ exports.getAllTours =  (req, res)=>{
    }
    
    exports.getTour = (req, res)=>{
-       console.log(req.params)
        const id = req.params.id * 1
-       if(id > tours.length){
-           return res.status(404).json({
-               status:"Fail",
-               message:"Invalid data"
-           })
-       }
        const tour = tours.find(el =>el.id === id)
        res.status(200).json({
          status:"Success",
@@ -38,7 +50,7 @@ exports.getAllTours =  (req, res)=>{
    
    tours.push(newTour)
    
-   fs.writeFile(`${__dirname}/dev-data/data/tours-simple.json`, JSON.stringify(tours), err=>{
+   fs.writeFile(`${__dirname}/../dev-data/data/tours-simple.json`, JSON.stringify(tours), err=>{
       res.status(201).json({
        status:"Success",
        data:{
@@ -52,13 +64,6 @@ exports.getAllTours =  (req, res)=>{
    exports.updateTour = (req,res)=>{
        const tourid = req.params.id * 1
        const tour = tours.find(tour=>tour.id = tourid)
-   
-       if(tourid > tours.length){
-           return res.status(404).json({
-               status:"Fail",
-               message:"Invalid data"
-           })
-       }  
        const updatedtour = {...tour, ...req.body}
       
        res.status(200).json({
@@ -81,14 +86,14 @@ exports.getAllTours =  (req, res)=>{
    
        newTours = tours.filter(tour => tour.id !== tourId);
    
-       fs.writeFile(`${__dirname}/dev-data/data/tours-simple.json`, JSON.stringify(newTours), err => {
+       fs.writeFile(`${__dirname}/../dev-data/data/tours-simple.json`, JSON.stringify(newTours), err => {
            if (err) return res.status(500).json({
                 status: "error", 
                 message: "Failed to delete tour"
             });
            res.status(204).json({
                 status: "success",
-                data:null
+                message: "Tour deleted successfully"
             });
        });
    }
