@@ -41,3 +41,8 @@ if(process.argv[2] === '--import'){
 } else if(process.argv[2] === '--delete'){
     deleteData()
 }
+
+////////////////////command to run the script on the terminal////////////////////
+
+// node dev-data/data/import-dev-data.js --import
+// node dev-data/data/import-dev-data.js --delete
