@@ -1,11 +1,9 @@
-/* eslint-disable prettier/prettier */
 
 const express = require("express")
 const morgan = require('morgan')
-// eslint-disable-next-line no-unused-vars
+
 const { execPath } = require('process')
 const tourRouter = require('./routes/tourRoutes')
-// eslint-disable-next-line import/newline-after-import
 const userRouter = require('./routes/userRoutes')
 const app = express()
 // 1 Middlewares
