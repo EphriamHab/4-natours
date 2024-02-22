@@ -205,30 +205,7 @@
             "2022-01-16,10:00",
             "2022-12-12,10:00"
         ]
-    },
-    {
-        "id": 10,
-        "name": "Test from postman",
-        "duration": 8,
-        "maxGroupSize": 16
-    },
-    {
-        "id": 11,
-        "name": "Test from postman",
-        "duration": 8,
-        "maxGroupSize": 16
-    },
-    {
-        "id": 13,
-        "name": "Test from postman",
-        "duration": 8,
-        "maxGroupSize": 16
-    },
-    {
-        "id": 14,
-        "name": "Test 2 from postman",
-        "duration": 8,
-        "maxGroupSize": 16,
-        "price": 150
     }
+
 ]
+    
